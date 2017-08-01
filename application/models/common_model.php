@@ -207,6 +207,22 @@ class Common_model extends CI_Model {
         return $query;
     }
     
+    function getAllCategories(){
+        $this->db->select('*');
+        $this->db->from('categories');
+       
+        $query = $this->db->get();
+        return $query;
+    }
+    
+     function getCategoryByID($id){
+        $this->db->select('*');
+        $this->db->from('categories');
+        $this->db->where('id',$id);
+        $query = $this->db->get();
+        return $query;
+    }
+    
     function getRestaurants($userID){
         $this->db->select('*');
         $this->db->from('restaurants');

@@ -40,18 +40,18 @@
                         <li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-puzzle"></i>
-                                <span class="title">Others</span>
+                                <span class="title">Restaurant Categories</span>
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="#" class="nav-link ">
-                                        <span class="title">Other Events</span>
+                                    <a href="<?php echo site_url('admin/categories/add');?>" class="nav-link ">
+                                        <span class="title">Add New</span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="#" class="nav-link ">
-                                        <span class="title">Other Events 2</span>
+                                    <a href="<?php echo site_url('admin/categories/viewCategories');?>" class="nav-link ">
+                                        <span class="title">View All</span>
                                         
                                     </a>
                                 </li>

@@ -29,75 +29,86 @@
                         <form name="add" id="add" method="post" enctype="multipart/form-data" action="<?php echo site_url('admin/restaurants/addSuccess'); ?>" class="form-horizontal">
                             <div class="form-body">
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Title</label>
-                                    <div class="col-md-6">
+                                    <label class="col-md-3 control-label">Restaurant Name</label>
+                                    <div class="col-md-7">
                                         <input type="text" name="title" id="title" class="form-control input-circle" placeholder="Enter title">
 
                                     </div>
                                 </div>
                                 
-                                <div class="form-group">
-                                        <label for="multiple" class="col-md-3 control-label">Select Categories</label>
-                                        <div class="col-md-6">
-                                            <select id="categories" name="categories[]" class="form-control select2-multiple input-circle" multiple>
-                                                  <?php
-                                            if (count($categories) > 0) {
-                                                foreach ($categories->result() as $category) {
-                                                    ?>
-                                                <option value="<?php echo $category->name;?>"><?php echo $category->name;?></option>
-                                                <?php }
-                                            }
-                                            ?>
-                                            </select>
+                               <div class="form-group">
+                                    <label class="col-md-3 control-label">Restaurant Logo</label>
+                                    <div class="col-md-7">
+                                        <input type="file" name="logo" id="logo" class="">
                                     </div>
-                                         </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Address</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <input type="text" name="address" id="address" class="form-control input-circle" placeholder="Address">
+                                    </div>
+                                    <label class="col-md-2 control-label">Phone number(Land Line)</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="phone" id="phone" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-md-3 control-label">Mobile Phone number</label>
+                                    <div class="col-md-3">
+                                        <input type="text" name="mobile" id="mobile" class="form-control input-circle" placeholder="">
+                                    </div>
+                                    <label class="col-md-2 control-label">Fax number</label>
+                                     <div class="col-md-2">
+                                        <input type="text" name="fax" id="fax" class="form-control input-circle" placeholder="">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Country</label>
+                                    <label class="col-md-3 control-label">City</label>
+                                    <div class="col-md-3">
+                                        <input type="text" name="city" id="city" class="form-control input-circle" placeholder="City">
+                                    </div>
+                                    <label class="col-md-2 control-label">State</label>
+                                    <div class="col-md-2">
+                                        <select class="form-control input-circle" name="state" id="state">
+
+                                         </select>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    
+                                    <label class="col-md-3 control-label">Zip Code</label>
+                                    <div class="col-md-3">
+                                        <input type="text" name="zipcode" id="zipcode" class="form-control input-circle" placeholder="">
+                                    </div>
+                                    <label class="col-md-2 control-label">Country</label>
                                     <div class="col-md-2">
                                         <select class="form-control input-circle" name="country" id="country" onchange="getCities()">
                                             <?php
                                             if (count($countries) > 0) {
                                                 foreach ($countries->result() as $country) {
                                                     ?>
-                                                    <option value="<?php echo $country->id; ?>"><?php echo $country->name; ?></option>
+                                            <option value="<?php echo $country->id; ?>" <?php if($country->id==223){ echo 'selected="selected"';}?>><?php echo $country->name; ?></option>
                                                 <?php }
                                             }
                                             ?>
                                         </select>
-                                    </div>
-                                    <label class="col-md-1 control-label">State</label>
-                                    <div class="col-md-2">
-                                        <select class="form-control input-circle" name="state" id="state">
-
-
-                                        </select>
-                                    </div>
-                                </div>
-                                
-
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">City</label>
-                                    <div class="col-md-6">
-                                        <input type="text" name="city" id="city" class="form-control input-circle" placeholder="City">
+                                        
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Zip/Postal Code</label>
-                                    <div class="col-md-6">
-                                        <input type="text" name="zipcode" id="zipcode" class="form-control input-circle" placeholder="">
+                                    <label class="col-md-3 control-label"> Email Address</label>
+                                    <div class="col-md-7">
+                                        <input type="email" name="email" id="email" class="form-control input-circle" placeholder="">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Notified Type</label>
-                                    <div class="col-md-6">
+                                    
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <label class=" control-label margin-bottom-15">How would you like to be notified of new orders?</label>
                                         <div class="mt-radio-list">
                                             <label class="mt-radio mt-radio-outline">
                                                 <input type="radio" onclick="checkNotifiy('email')" name="notified_via" id="optionsRadios22" value="email" checked="checked" > Email
@@ -125,18 +136,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Email</label>
-                                    <div class="col-md-6">
-                                        <input type="email" name="email" id="email" class="form-control input-circle" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Phone</label>
-                                    <div class="col-md-6">
-                                        <input type="text" name="phone" id="phone" class="form-control input-circle" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label class="control-label col-md-3">Hours of Operation</label>
                                     <label class="control-label col-md-1">From</label>
                                     <div class="col-md-2">
@@ -161,21 +160,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Description</label>
-                                    <div class="col-md-6">
-                                        <textarea class="form-control" name="description" id="description" rows="3"></textarea>
-                                    </div>
-                                </div>
+                                
 
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Upload Restaurants Logo</label>
-                                    <div class="col-md-6">
-                                        <input type="file" name="logo" id="logo" class="">
+                                
+                                
+                                 <div class="form-group">
+                                        <label for="multiple" class="col-md-3 control-label"> Restaurant Category</label>
+                                        <div class="col-md-6">
+                                            <select id="categories" name="categories[]" class="form-control select2-multiple input-circle" multiple>
+                                                  <?php
+                                            if (count($categories) > 0) {
+                                                foreach ($categories->result() as $category) {
+                                                    ?>
+                                                <option value="<?php echo $category->name;?>"><?php echo $category->name;?></option>
+                                                <?php }
+                                            }
+                                            ?>
+                                            </select>
                                     </div>
-                                </div>
-                                
-                                
+                                         </div>
+                                 
                                 
                                  <div class="form-group">
                                     <label class="col-md-3 control-label">Status</label>
