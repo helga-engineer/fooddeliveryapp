@@ -52,24 +52,20 @@
                                 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Address</label>
-                                    <div class="col-md-3">
+                                    <div class="col-md-7">
                                         <input type="text" name="address" id="address" class="form-control input-circle" value="<?php echo $restaurants->address;?>" placeholder="Address">
                                     </div>
-                                    <label class="col-md-2 control-label">Phone number(Land Line)</label>
-                                    <div class="col-md-2">
-                                        <input type="text" name="phone" id="phone" value="<?php echo $restaurants->phone;?>" class="form-control input-circle" placeholder="">
-                                    </div>
+                                    
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Mobile Phone number</label>
-                                    <div class="col-md-3">
-                                        <input type="text" name="mobile" id="mobile" class="form-control input-circle" placeholder="">
+                                    <label class="col-md-3 control-label">Address 2</label>
+                                    <div class="col-md-7">
+                                        <input type="text" name="address2" id="address2" class="form-control input-circle" value="<?php echo $restaurants->address_2;?>">
                                     </div>
-                                    <label class="col-md-2 control-label">Fax number</label>
-                                     <div class="col-md-2">
-                                        <input type="text" name="fax" id="fax" class="form-control input-circle" placeholder="">
-                                    </div>
+                                    
                                 </div>
+                                
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">City</label>
                                     <div class="col-md-3">
@@ -103,6 +99,24 @@
                                     </div>
                                     
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Phone number(Land Line)</label>
+                                    <div class="col-md-3">
+                                        <input type="text" name="phone" id="phone" value="<?php echo $restaurants->phone;?>" class="form-control input-circle" placeholder="">
+                                    </div>
+                                    <label class="col-md-2 control-label">Mobile Phone number</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="mobile" id="mobile" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    
+                                    <label class="col-md-3 control-label">Fax number</label>
+                                     <div class="col-md-3">
+                                        <input type="text" name="fax" id="fax" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                                
                                 
 
                                 <div class="form-group">
@@ -170,7 +184,7 @@
                                 
                                 <div class="form-group">
                                         <label for="multiple" class="col-md-3 control-label"> Restaurant Category</label>
-                                        <div class="col-md-6">
+                                        <div class="col-md-7">
                                             <select id="categories" name="categories[]" class="form-control select2-multiple  input-circle" multiple>
                                                   <?php 
                                             if (count($categories) > 0) {
@@ -219,6 +233,9 @@
     </div>
     <!-- END CONTENT BODY -->
 </div>
+
+<?php include(APPPATH . "views/admin/inc/footer.php"); ?>
+
 <script type="text/javascript">
     function getCities() {
         var country_id = $('#country').val();
@@ -236,4 +253,3 @@
     
     
 </script>
-<?php include(APPPATH . "views/admin/inc/footer.php"); ?>

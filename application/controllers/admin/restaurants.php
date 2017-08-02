@@ -51,6 +51,7 @@ class Restaurants extends CI_Controller {
             $data['user_id'] = $user_id;
             $data['title'] = $this->input->post('title');
             $data['address'] = $this->input->post('address');
+            $data['address_2'] = $this->input->post('address2');
             $data['mobile'] = $this->input->post('mobile');
             $data['fax'] = $this->input->post('fax');
             $data['country'] = $this->input->post('country');
@@ -124,6 +125,7 @@ class Restaurants extends CI_Controller {
             $data['user_id'] = $user_id;
             $data['title'] = $this->input->post('title');
             $data['address'] = $this->input->post('address');
+             $data['address_2'] = $this->input->post('address2');
             $data['mobile'] = $this->input->post('mobile');
             $data['fax'] = $this->input->post('fax');
             $data['country'] = $this->input->post('country');

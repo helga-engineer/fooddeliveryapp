@@ -30,7 +30,7 @@
                             <div class="form-body">
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Restaurant Name</label>
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <input type="text" name="title" id="title" class="form-control input-circle" placeholder="Enter title">
 
                                     </div>
@@ -38,30 +38,26 @@
                                 
                                <div class="form-group">
                                     <label class="col-md-3 control-label">Restaurant Logo</label>
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <input type="file" name="logo" id="logo" class="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Address</label>
-                                    <div class="col-md-3">
+                                    <div class="col-md-8">
                                         <input type="text" name="address" id="address" class="form-control input-circle" placeholder="Address">
                                     </div>
-                                    <label class="col-md-2 control-label">Phone number(Land Line)</label>
-                                    <div class="col-md-2">
-                                        <input type="text" name="phone" id="phone" class="form-control input-circle" placeholder="">
-                                    </div>
+                                   
                                 </div>
-                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Mobile Phone number</label>
-                                    <div class="col-md-3">
-                                        <input type="text" name="mobile" id="mobile" class="form-control input-circle" placeholder="">
+                                
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Address 2</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="address2" id="address2" class="form-control input-circle" placeholder="Address 2">
                                     </div>
-                                    <label class="col-md-2 control-label">Fax number</label>
-                                     <div class="col-md-2">
-                                        <input type="text" name="fax" id="fax" class="form-control input-circle" placeholder="">
-                                    </div>
+                                    
                                 </div>
+                                 
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">City</label>
@@ -69,14 +65,12 @@
                                         <input type="text" name="city" id="city" class="form-control input-circle" placeholder="City">
                                     </div>
                                     <label class="col-md-2 control-label">State</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <select class="form-control input-circle" name="state" id="state">
 
                                          </select>
                                     </div>
                                 </div>
-                                
-
                                 <div class="form-group">
                                     
                                     <label class="col-md-3 control-label">Zip Code</label>
@@ -84,7 +78,7 @@
                                         <input type="text" name="zipcode" id="zipcode" class="form-control input-circle" placeholder="">
                                     </div>
                                     <label class="col-md-2 control-label">Country</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <select class="form-control input-circle" name="country" id="country" onchange="getCities()">
                                             <?php
                                             if (count($countries) > 0) {
@@ -97,10 +91,30 @@
                                         </select>
                                         
                                     </div>
+                                    <input type="hidden" name="country_idd" id="country_idd" value="223">
                                 </div>
                                 <div class="form-group">
+                                   
+                                    <label class="col-md-3 control-label">Phone number(Land Line)</label>
+                                    <div class="col-md-3">
+                                        <input type="text" name="phone" id="phone" class="form-control input-circle" placeholder="">
+                                    </div>
+                                    <label class="col-md-2 control-label">Mobile Phone number</label>
+                                    <div class="col-md-3">
+                                        <input type="text" name="mobile" id="mobile" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    
+                                    <label class="col-md-3 control-label">Fax number</label>
+                                     <div class="col-md-3">
+                                        <input type="text" name="fax" id="fax" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
                                     <label class="col-md-3 control-label"> Email Address</label>
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <input type="email" name="email" id="email" class="form-control input-circle" placeholder="">
                                     </div>
                                 </div>
@@ -137,10 +151,25 @@
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3">Hours of Operation</label>
+                                    <div id="add_more_dv">
+                                        <div class="col-md-8">
+                                        <div class="col-md-2">
+                                        <select class="form-control " name="days" id="days">
+                                           <option value="Monday" >Monday</option>
+                                           <option value="Tuesday" >Tuesday</option>
+                                           <option value="Wednesday" >Wednesday</option>
+                                           <option value="Thursday" >Thursday</option>
+                                           <option value="Friday" >Friday</option>
+                                           <option value="Saturday" >Saturday</option>
+                                           <option value="Sunday" >Sunday</option>
+                                               
+                                        </select>
+                                        
+                                    </div>
                                     <label class="control-label col-md-1">From</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="input-group">
-                                            <input type="text" name="fromHours" class="form-control timepicker timepicker-no-seconds">
+                                            <input type="text" name="fromHours" class="form-control timepicker timepicker-no-seconds" value="1:05 AM">
                                             <span class="input-group-btn">
                                                 <button class="btn default" type="button">
                                                     <i class="fa fa-clock-o"></i>
@@ -149,16 +178,22 @@
                                         </div>
                                     </div>
                                     <label class="control-label col-md-1">To</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="input-group">
-                                            <input type="text" name="toHours" class="form-control timepicker timepicker-no-seconds">
+                                            <input type="text" name="toHours" class="form-control timepicker timepicker-no-seconds" value="1:05 AM">
                                             <span class="input-group-btn">
-                                                <button class="btn default" type="button">
+                                                <button class="btn default" type="button" >
                                                     <i class="fa fa-clock-o"></i>
                                                 </button>
                                             </span>
                                         </div>
                                     </div>
+                                    <div class=" col-md-2">
+                                        <button type="button" class="btn btn-circle green uppercase" name="add" id="add">Add +</button>
+                                       
+                                    </div>
+                                </div>
+                                        </div>
                                 </div>
                                 
 
@@ -166,7 +201,7 @@
                                 
                                  <div class="form-group">
                                         <label for="multiple" class="col-md-3 control-label"> Restaurant Category</label>
-                                        <div class="col-md-6">
+                                        <div class="col-md-7">
                                             <select id="categories" name="categories[]" class="form-control select2-multiple input-circle" multiple>
                                                   <?php
                                             if (count($categories) > 0) {
@@ -215,12 +250,36 @@
     </div>
     <!-- END CONTENT BODY -->
 </div>
-<script>
+
+<?php include(APPPATH . "views/admin/inc/footer.php"); ?>
+
+<script type="text/javascript">
+    //alert('sds');
+     $(document).ready(function() {
+    var country_id = 223;
+    //alert(country_id);
+        $.post("<?php echo site_url('admin/restaurants/getCities'); ?>", {country_id: country_id}).done(function (data) {
+            $('#state').html(data);
+        });
+});
     function getCities() {
         var country_id = $('#country').val();
         $.post("<?php echo site_url('admin/restaurants/getCities'); ?>", {country_id: country_id}).done(function (data) {
             $('#state').html(data);
         });
     }
+    $(document).on('click','.btn_remove', function(){
+		var button_id = $(this).attr("id");
+               // alert(button_id);
+		$("#row"+button_id+"").remove();
+	});
+    $(document).ready(function(){
+	var i = 1;
+	$('#add').click(function(){
+		i++;
+		$('#add_more_dv').append('<div class="col-md-8 col-md-offset-3" id="row'+i+'"><div class="col-md-2"><select class="form-control " name="days" id=""><option value="Monday" >Monday</option><option value="Tuesday" >Tuesday</option><option value="Wednesday" >Wednesday</option><option value="Thursday" >Thursday</option><option value="Friday" >Friday</option><option value="Saturday" >Saturday</option><option value="Sunday" >Sunday</option></select></div><label class="control-label col-md-1">From</label><div class="col-md-3"><div class="input-group"><input type="text" name="fromHours" class="form-control timepicker timepicker-no-seconds" value="1:05 AM"><span class="input-group-btn"><button class="btn default" type="button"><i class="fa fa-clock-o"></i></button></span></div></div><label class="control-label col-md-1">To</label><div class="col-md-3"><div class="input-group"><input type="text" name="toHours" class="form-control timepicker timepicker-no-seconds" value="1:05 AM"> <span class="input-group-btn"><button class="btn default" type="button" ><i class="fa fa-clock-o"></i></button></span></div></div><div class=" col-md-2"><button type="button" class="btn btn-circle red btn_remove uppercase" name="remove" id="'+i+'">X</button></div></div>');
+	});
+	
+	
+});
 </script>
-<?php include(APPPATH . "views/admin/inc/footer.php"); ?>
