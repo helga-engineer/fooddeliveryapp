@@ -1,7 +1,7 @@
 <?php include(APPPATH . "views/admin/inc/header.php"); ?>
 <?php include(APPPATH . "views/admin/inc/sidebar.php"); ?>
 <div class="page-content-wrapper">
-    <!-- BEGIN CONTENT BODY -->
+    <!-- BEGIN CONTENT BODY////// -->
     <div class="page-content" style="min-height: 1603px;">
 
         <!-- BEGIN PAGE BREADCRUMB -->
