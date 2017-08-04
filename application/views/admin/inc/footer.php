@@ -88,6 +88,12 @@
         <script src="<?php echo base_url() ;?>assets/admin/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url() ;?>assets/admin/assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
+		
+		<script type="text/javascript" src="<?php echo base_url() ;?>assets/admin/assets/time-picker-js/jquery.ui.core.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url() ;?>assets/admin/assets/time-picker-js/jquery.ui.widget.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url() ;?>assets/admin/assets/time-picker-js/jquery.ui.tabs.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url() ;?>assets/admin/assets/time-picker-js/jquery.ui.position.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url() ;?>assets/admin/assets/time-picker-js/jquery.ui.timepicker.js?v=0.3.3"></script>
     </body>
 
 </html>

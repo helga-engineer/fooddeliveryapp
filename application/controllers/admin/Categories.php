@@ -2,12 +2,12 @@
 
 class Categories extends CI_Controller {
 
-    function __construct(){
-		parent::__construct();
-		if(!$this->session->userdata("admin_login")){
-			redirect(site_url("admin/login"));	
-		}
-	}
+   function __construct() {
+        parent::__construct();
+        if (!$this->session->userdata("admin_login")) {
+            redirect(site_url("admin/login"));
+        }
+    }
 
 	public function index()
 	{

@@ -41,7 +41,7 @@
         <link href="<?php echo base_url() ;?>assets/admin/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url() ;?>assets/admin/assets/global/plugins/clockface/css/clockface.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
-        
+        <link rel="stylesheet" href="<?php echo base_url() ;?>assets/admin/assets/time-picker-css/jquery-ui-1.10.0.custom.min.css" type="text/css" />
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <link href="<?php echo base_url() ;?>assets/admin/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url() ;?>assets/admin/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />

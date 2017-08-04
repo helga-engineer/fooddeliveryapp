@@ -148,28 +148,50 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">Hours of Operation</label>
-                                    <div id="add_more_dv">
-                                        <div class="col-md-8">
-                                        <div class="col-md-2">
-                                        <select class="form-control " name="days" id="days">
-                                           <option value="Monday" >Monday</option>
-                                           <option value="Tuesday" >Tuesday</option>
-                                           <option value="Wednesday" >Wednesday</option>
-                                           <option value="Thursday" >Thursday</option>
-                                           <option value="Friday" >Friday</option>
-                                           <option value="Saturday" >Saturday</option>
-                                           <option value="Sunday" >Sunday</option>
-                                               
-                                        </select>
-                                        
-                                    </div>
+									<div class="form-group">
+										<div class="col-md-7 col-sm-offset-5">
+										  <label for="about" class="control-label"><b>Hours of Operation</b></label>
+										</div>
+									  </div>
+									  <div id="add_hours">
+										<div class="form-group" id="row0" style="padding-left:42px;">
+										  <input type="hidden" id="counter" name="counter[]" value="0" />
+										  <div class="col-md-11 col-sm-offset-0">
+											<div class="col-md-3">
+											  <select class="form-control  c-square c-theme" id="days" name="day[0][]">
+												<option value="Mon" selected="selected">Monday</option>
+												<option value="Tue">Tuesday</option>
+												<option value="Wed">Wednesday</option>
+												<option value="Thu">Thursday</option>
+												<option value="Fri">Friday</option>
+												<option value="Sat">Saturday</option>
+												<option value="Sun">Sunday</option>
+											  </select>
+											</div>
+											<div class="col-md-1">
+											  <label for="from" class="control-label">from</label>
+											</div>
+											<div class="col-md-3">
+											  <input type="text" class="form-control  c-square c-theme timepicker_7" name="from[0][]" id="timepicker_7" value="01:30 PM" >
+											</div>
+											<div class="col-md-1">
+											  <label for="to" class="control-label">to</label>
+											</div>
+											<div class="col-md-3">
+											  <input type="text" class="form-control  c-square c-theme timepicker_7" name="to[0][]" id="timepicker_8" value="01:30 PM" >
+											</div>
+											<div class="col-md-1">
+											  <button type="button" class="btn   c-btn-square c-btn-uppercase c-btn-bold green" id="add-row" style="width: 97px;"><i class="glyphicon glyphicon-plus"></i>Add</button>
+											</div>
+										  </div>
+										</div>
+									  </div>
+                            <!--    <div class="form-group">
+                                    <input type="hidden" id="counter" name="counter[]" value="0" />
                                     <label class="control-label col-md-1">From</label>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="input-group">
-                                            <input type="text" name="fromHours" class="form-control timepicker timepicker-no-seconds" value="1:05 AM">
+                                            <input type="text" name="fromHours" class="form-control timepicker timepicker-no-seconds">
                                             <span class="input-group-btn">
                                                 <button class="btn default" type="button">
                                                     <i class="fa fa-clock-o"></i>
@@ -178,30 +200,24 @@
                                         </div>
                                     </div>
                                     <label class="control-label col-md-1">To</label>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="input-group">
-                                            <input type="text" name="toHours" class="form-control timepicker timepicker-no-seconds" value="1:05 AM">
+                                            <input type="text" name="toHours" class="form-control timepicker timepicker-no-seconds">
                                             <span class="input-group-btn">
-                                                <button class="btn default" type="button" >
+                                                <button class="btn default" type="button">
                                                     <i class="fa fa-clock-o"></i>
                                                 </button>
                                             </span>
                                         </div>
                                     </div>
-                                    <div class=" col-md-2">
-                                        <button type="button" class="btn btn-circle green uppercase" name="add" id="add">Add +</button>
-                                       
-                                    </div>
                                 </div>
-                                        </div>
-                                </div>
-                                
+                                -->
 
                                 
                                 
                                  <div class="form-group">
                                         <label for="multiple" class="col-md-3 control-label"> Restaurant Category</label>
-                                        <div class="col-md-7">
+                                        <div class="col-md-8">
                                             <select id="categories" name="categories[]" class="form-control select2-multiple input-circle" multiple>
                                                   <?php
                                             if (count($categories) > 0) {
@@ -268,18 +284,44 @@
             $('#state').html(data);
         });
     }
-    $(document).on('click','.btn_remove', function(){
+	
+	$(document).ready(function() {
+                $('.timepicker_7').timepicker({
+                    showPeriod: true,
+                    onHourShow: timepicker7OnHourShowCallback,
+                    onMinuteShow: timepicker7OnMinuteShowCallback
+                });
+            });
+            function timepicker7OnHourShowCallback(hour) {
+                if ((hour > 20) || (hour < 6)) {
+                    return false;
+                }
+                return true;
+            }
+            function timepicker7OnMinuteShowCallback(hour, minute) {
+                if ((hour == 20) && (minute >= 30)) { return false; }
+                if ((hour == 6) && (minute < 30)) { return false; }
+                return true;
+            }
+	$(document).ready(function(){
+	var i = 0;
+	$('#add-row').click(function(){
+		i++;
+		$('#add_hours').append('<div class="form-group" id="row'+i+'" style="padding-left:42px;"><input type="hidden" id="counter" name="counter[]" value="'+i+'" /><div class="col-md-11 col-sm-offset-0"><div class="col-md-3"><select class="form-control  c-square c-theme" id="days" name="day['+i+'][]"><option value="Mon" selected="selected">Monday</option><option value="Tue">Tuesday</option><option value="Wed">Wednesday</option><option value="Thu">Thursday</option><option value="Fri">Friday</option><option value="Sat">Saturday</option><option value="Sun">Sunday</option></select></div><div class="col-md-1"><label for="from" class="control-label">from</label></div><div class="col-md-3"><input type="text" class="form-control  c-square c-theme timepicker_7" name="from['+i+'][]" id="" value="01:30 PM" ></div><div class="col-md-1"><label for="to" class="control-label">to</label></div><div class="col-md-3"><input type="text" class="form-control  c-square c-theme timepicker_7" name="to['+i+'][]" id="" value="01:30 PM" ></div><div class="col-md-1"><button type="button" style="width:97px;" class="btn btn-danger btn_remove c-btn-square c-btn-uppercase" id="'+i+'"><i class="icon-trash"></i>Remove</button></div></div></div>');
+	$('.timepicker_7').timepicker({
+                    showPeriod: true,
+                    onHourShow: timepicker7OnHourShowCallback,
+                    onMinuteShow: timepicker7OnMinuteShowCallback
+                });
+                //$("#counter").val(i);
+            });
+            
+	$(document).on('click','.btn_remove', function(){
 		var button_id = $(this).attr("id");
-               // alert(button_id);
 		$("#row"+button_id+"").remove();
 	});
-    $(document).ready(function(){
-	var i = 1;
-	$('#add').click(function(){
-		i++;
-		$('#add_more_dv').append('<div class="col-md-8 col-md-offset-3" id="row'+i+'"><div class="col-md-2"><select class="form-control " name="days" id=""><option value="Monday" >Monday</option><option value="Tuesday" >Tuesday</option><option value="Wednesday" >Wednesday</option><option value="Thursday" >Thursday</option><option value="Friday" >Friday</option><option value="Saturday" >Saturday</option><option value="Sunday" >Sunday</option></select></div><label class="control-label col-md-1">From</label><div class="col-md-3"><div class="input-group"><input type="text" name="fromHours" class="form-control timepicker timepicker-no-seconds" value="1:05 AM"><span class="input-group-btn"><button class="btn default" type="button"><i class="fa fa-clock-o"></i></button></span></div></div><label class="control-label col-md-1">To</label><div class="col-md-3"><div class="input-group"><input type="text" name="toHours" class="form-control timepicker timepicker-no-seconds" value="1:05 AM"> <span class="input-group-btn"><button class="btn default" type="button" ><i class="fa fa-clock-o"></i></button></span></div></div><div class=" col-md-2"><button type="button" class="btn btn-circle red btn_remove uppercase" name="remove" id="'+i+'">X</button></div></div>');
-	});
-	
 	
 });
+    
+    
 </script>

@@ -39,20 +39,20 @@
                                
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Restaurant Logo</label>
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <input type="file" name="logo" id="logo" class="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"></label>
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <div><img src="<?php echo base_url();?>uploads/<?php echo $restaurants->image;?>" height="250" width="250"></div>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Address</label>
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <input type="text" name="address" id="address" class="form-control input-circle" value="<?php echo $restaurants->address;?>" placeholder="Address">
                                     </div>
                                     
@@ -60,7 +60,7 @@
                                 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Address 2</label>
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <input type="text" name="address2" id="address2" class="form-control input-circle" value="<?php echo $restaurants->address_2;?>">
                                     </div>
                                     
@@ -72,7 +72,7 @@
                                          <input type="text" name="city" id="city" class="form-control input-circle" value="<?php echo $restaurants->city;?>" placeholder="City">
                                     </div>
                                     <label class="col-md-2 control-label">State</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <select class="form-control input-circle" name="state" id="state">
 
                                          </select>
@@ -85,7 +85,7 @@
                                         <input type="text" name="zipcode" id="zipcode" value="<?php echo $restaurants->zipcode;?>" class="form-control input-circle" placeholder="">
                                     </div>
                                     <label class="col-md-2 control-label">Country</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <select class="form-control input-circle" name="country" id="country" onchange="getCities()">
                                             <?php
                                             if (count($countries) > 0) {
@@ -105,7 +105,7 @@
                                         <input type="text" name="phone" id="phone" value="<?php echo $restaurants->phone;?>" class="form-control input-circle" placeholder="">
                                     </div>
                                     <label class="col-md-2 control-label">Mobile Phone number</label>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <input type="text" name="mobile" id="mobile" class="form-control input-circle" placeholder="">
                                     </div>
                                 </div>
@@ -154,37 +154,60 @@
                                     </div>
                                 </div>
 
-                                
-                               
                                 <div class="form-group">
-                                    <label class="control-label col-md-3">Hours of Operation</label>
-                                    <label class="control-label col-md-1">From</label>
-                                    <div class="col-md-2">
-                                        <div class="input-group">
-                                            <input type="text" name="fromHours" value="<?php echo $restaurants->hours_of_operations_from;?>" class="form-control timepicker timepicker-no-seconds">
-                                            <span class="input-group-btn">
-                                                <button class="btn default" type="button">
-                                                    <i class="fa fa-clock-o"></i>
-                                                </button>
-                                            </span>
+										<div class="col-md-7 col-sm-offset-5">
+										  <label for="about" class="control-label"><b>Hours of Operation</b></label>
+										</div>
+									  </div>
+                               
+                                <div id="add_hours">
+                                     <?php $json =json_decode($restaurants->hours_of_operations, true); $counter = 0;?>
+                                    <?php foreach($json as $hours){ ?>
+                                    <div class="form-group" id="row<?php echo $counter ?>" style="padding-left:42px;">
+                                    <input type="hidden" id="" name="counter[]" value="<?php echo $counter ?>" />
+                                    <?php   $FromTime = substr($hours,-40,19); $ToTime = substr($hours,-8,12); $Day = substr($hours,0,3);  ?> 
+                                    <div class="col-md-11 col-sm-offset-0">
+                                        
+                                        <div class="col-md-3">
+                                            <select class="form-control  c-square c-theme" id="" name="day[<?php echo $counter ?>][]">
+                                                <option <?php if($Day=='Mon'){echo 'selected="selected"';} ?> value="Mon" >Monday</option>
+                                                <option <?php if($Day=='Tue'){echo 'selected="selected"';} ?> value="Tue">Tuesday</option>
+                                                <option <?php if($Day=='Wed'){echo 'selected="selected"';} ?> value="Wed">Wednesday</option>
+                                                <option <?php if($Day=='Thu'){echo 'selected="selected"';} ?> value="Thu">Thursday</option>
+                                                <option <?php if($Day=='Fri'){echo 'selected="selected"';} ?> value="Fri">Friday</option>
+                                                <option <?php if($Day=='Sat'){echo 'selected="selected"';} ?> value="Sat">Saturday</option>
+                                                <option <?php if($Day=='Sun'){echo 'selected="selected"';} ?> value="Sun">Sunday</option>
+                                            </select>
                                         </div>
-                                    </div>
-                                    <label class="control-label col-md-1">To</label>
-                                    <div class="col-md-2">
-                                        <div class="input-group">
-                                            <input type="text" name="toHours" value="<?php echo $restaurants->hours_of_operations_to;?>" class="form-control timepicker timepicker-no-seconds">
-                                            <span class="input-group-btn">
-                                                <button class="btn default" type="button">
-                                                    <i class="fa fa-clock-o"></i>
-                                                </button>
-                                            </span>
+                                        <div class="col-md-1">
+                                        <label for="from" class="control-label">from</label>
+                                       </div>
+                                        <div class="col-md-3">
+                                           <input type="text" class="form-control  c-square c-theme timepicker_7" name="from[<?php echo $counter ?>][]" id="" value="<?php echo $FromTime; ?>" >
+                                         </div>
+                                        <div class="col-md-1">
+                                        <label for="to" class="control-label">to</label>
                                         </div>
+                                        <div class="col-md-3">
+                                          <input type="text" class="form-control  c-square c-theme timepicker_7" name="to[<?php echo $counter ?>][]" id="" value="<?php echo $ToTime; ?>" >
+                                        </div>
+                                        <?php if($counter == 0) {?>
+                                        <div class="col-md-1">
+                                            <button type="button" class="btn c-theme-btn  c-btn-square c-btn-uppercase c-btn-bold" id="add-row" style="width: 97px;"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                        </div>
+                                        <?php }else { ?>
+                                        <div class="col-md-1"><button type="button" style="width:97px;" class="btn btn-danger btn_remove c-btn-square c-btn-uppercase" id="<?php echo $counter ?>"><i class="icon-trash"></i>Remove</button></div>
+                                        <?php } ?>
                                     </div>
+                                   
                                 </div>
+                                    <?php $counter++; ?>
+                                     <?php }?>
+                                    </div>
                                 
                                 <div class="form-group">
                                         <label for="multiple" class="col-md-3 control-label"> Restaurant Category</label>
-                                        <div class="col-md-7">
+                                        <div class="col-md-8">
                                             <select id="categories" name="categories[]" class="form-control select2-multiple  input-circle" multiple>
                                                   <?php 
                                             if (count($categories) > 0) {
@@ -250,6 +273,46 @@
             $('#state').html(data);
         });
 });
-    
+        $(document).ready(function() {
+                $('.timepicker_7').timepicker({
+                    showPeriod: true,
+                    onHourShow: timepicker7OnHourShowCallback,
+                    onMinuteShow: timepicker7OnMinuteShowCallback
+                });
+                
+                
+                
+            });
+            function timepicker7OnHourShowCallback(hour) {
+                if ((hour > 20) || (hour < 6)) {
+                    return false;
+                }
+                return true;
+            }
+            function timepicker7OnMinuteShowCallback(hour, minute) {
+                if ((hour == 20) && (minute >= 30)) { return false; }
+                if ((hour == 6) && (minute < 30)) { return false; }
+                return true;
+            }
+			
+			$(document).ready(function(){
+	var i = <?php echo $counter+1 ?>;
+	$('#add-row').click(function(){
+		i++;
+		$('#add_hours').append('<div class="form-group" id="row'+i+'" style="padding-left:42px;"><input type="hidden" id="" name="counter[]" value="'+i+'" /><div class="col-md-11 col-sm-offset-0"><div class="col-md-3"><select class="form-control  c-square c-theme" id="" name="day['+i+'][]"><option value="Mon" selected="selected">Monday</option><option value="Tue">Tuesday</option><option value="Wed">Wednesday</option><option value="Thu">Thursday</option><option value="Fri">Friday</option><option value="Sat">Saturday</option><option value="Sun">Sunday</option></select></div><div class="col-md-1"><label for="from" class="control-label">from</label></div><div class="col-md-3"><input type="text" class="form-control  c-square c-theme timepicker_7" name="from['+i+'][]" id="" value="01:30 PM" ></div><div class="col-md-1"><label for="to" class="control-label">to</label></div><div class="col-md-3"><input type="text" class="form-control  c-square c-theme timepicker_7" name="to['+i+'][]" id="" value="01:30 PM" ></div><div class="col-md-1"><button type="button" style="width:97px;" class="btn btn-danger btn_remove c-btn-square c-btn-uppercase" id="'+i+'"><i class="icon-trash"></i>Remove</button></div></div></div>');
+	$('.timepicker_7').timepicker({
+                    showPeriod: true,
+                    onHourShow: timepicker7OnHourShowCallback,
+                    onMinuteShow: timepicker7OnMinuteShowCallback
+                });
+                //$("#counter").val(i);
+            });
+            
+	$(document).on('click','.btn_remove', function(){
+		var button_id = $(this).attr("id");
+		$("#row"+button_id+"").remove();
+	});
+	
+});
     
 </script>

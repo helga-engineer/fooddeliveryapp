@@ -44,7 +44,7 @@ class Restaurants extends CI_Controller {
     }
     
     public function editSuccess(){
-        
+         //print_r($_FILES["logo"]); exit;
             $UserData = $this->session->userdata("admin_login");
             $user_id = $UserData->id;
             $restaurant_id = $this->input->post('restaurant_id');
@@ -61,14 +61,20 @@ class Restaurants extends CI_Controller {
             $data['categories'] = json_encode($this->input->post('categories'));
             $data['notified_choice'] = $this->input->post('notified_via');
             $data['email'] = $this->input->post('email');
-            $data['hours_of_operations_from'] = $this->input->post('fromHours');
+            foreach ($this->input->post('counter') as $key => $val) {
+				$request = $this->input->post('day');
+				$request1 = $this->input->post('from');
+				$request2 = $this->input->post('to');
+            $vals[] = $request[$val][0] . '&nbsp;&nbsp;&nbsp;' . $request1[$val][0] . '&nbsp;&nbsp;-&nbsp;&nbsp;' . $request2[$val][0];
+        }
+            $data['hours_of_operations'] = json_encode($vals);
              $data['hours_of_operations_to'] =  $this->input->post('toHours');
             $data['phone'] = $this->input->post('phone');
             $data['status'] = $this->input->post('status');
 
-             $this->common_model->editRecord('id', $restaurant_id,'restaurants',$data);
-            
-            if (isset($_FILES["logo"]) && $_FILES["logo"]) {
+             $this->common_model->editRecord('id', $restaurant_id,'restaurants',$data); 
+           
+            if ($_FILES["logo"] !='') {
               
                 $this->common_model->delete('module_id', $restaurant_id, 'media');
                 
@@ -83,7 +89,9 @@ class Restaurants extends CI_Controller {
                  $uploaddir = "./uploads/";
                 $uploaddir2 = "./uploads/";
                 $uploadfile = $uploaddir . $fname;
+				//print_r($tmp_name); exit;
                 if (move_uploaded_file($tmp_name, $uploadfile)) {
+					//print_r('test inside'); exit;
                     $result["module_type"] = "restaurants";
                     $result["module_id"] = $restaurant_id;
                     $result["name"] = $name;
@@ -115,11 +123,12 @@ class Restaurants extends CI_Controller {
         $this->form_validation->set_rules('address', 'Address', 'required|xss_clean');
         $this->form_validation->set_rules('country', 'Country', 'required|xss_clean');
         $this->form_validation->set_rules('city', 'City', 'required|xss_clean');
-        $this->form_validation->set_rules('description', 'Description', 'required|xss_clean');
+        //$this->form_validation->set_rules('description', 'Description', 'required|xss_clean');
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', '<span style="color:red;">Please fill form again carefully.</span>');
             redirect('admin/restaurants/index');
         } else {
+			$request = $_POST ; 
             $UserData = $this->session->userdata("admin_login");
             $user_id = $UserData->id;
             $data['user_id'] = $user_id;
@@ -135,8 +144,14 @@ class Restaurants extends CI_Controller {
             $data['categories'] = json_encode($this->input->post('categories'));
             $data['notified_choice'] = $this->input->post('notified_via');
             $data['email'] = $this->input->post('email');
-            $data['hours_of_operations_from'] = $this->input->post('fromHours');
-             $data['hours_of_operations_to'] =  $this->input->post('toHours');
+			foreach ($this->input->post('counter') as $key => $val) {
+				$request = $this->input->post('day');
+				$request1 = $this->input->post('from');
+				$request2 = $this->input->post('to');
+            $vals[] = $request[$val][0] . '&nbsp;&nbsp;&nbsp;' . $request1[$val][0] . '&nbsp;&nbsp;-&nbsp;&nbsp;' . $request2[$val][0];
+        }
+            $data['hours_of_operations'] = json_encode($vals);
+            $data['hours_of_operations_to'] =  $this->input->post('toHours');
             $data['phone'] = $this->input->post('phone');
             $data['status'] = $this->input->post('status');
 
