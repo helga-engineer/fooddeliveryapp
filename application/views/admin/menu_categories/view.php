@@ -11,7 +11,7 @@
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <span class="active">View</span>
+                <span class="active">View All Menu Categories</span>
             </li>
         </ul>
         <!-- END PAGE BREADCRUMB -->
@@ -36,49 +36,30 @@
                                     <table class="table table-striped table-bordered table-hover" id="sample_1">
                                         <thead>
                                             <tr>
-                                                <th>Title</th>
-                                                <th>Address</th>
-                                                <th>Phone number(Land line)</th>
-                                               
-                                                 <th>Status</th>
-                                                <th>Menu Categories</th>
-                                                <th width="112px">Menus</th>
+                                                <th>ID</th>
+                                                <th>Category Name</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
+                                                <th>ID</th>
                                                 <th>Title</th>
-                                                <th>Address</th>
-                                                <th>Phone number(Land line)</th>
-                                               
-                                                 <th>Status</th>
-                                                 <th>Menu Categories</th>
-                                                 <th width="112px">Menus</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                       <?php   if (count($restaurants) > 0) {
-                                                foreach ($restaurants->result() as $restaurant) {
+                                       <?php   if (count($categories) > 0) {
+                                                foreach ($categories->result() as $category) {
                                                     ?>
                                             <tr>
-                                                <td><?php echo $restaurant->title; ?></td>
-                                                <td><?php echo $restaurant->address; ?></td>
-                                                <td><?php echo $restaurant->phone; ?></td>
-                                               
-                                                 <td><?php echo $restaurant->status; ?></td>
-                                                 <td><div class="btn-group btn-group-circle btn-group-solid">
-                                                         <a href="<?php echo site_url();?>admin/restaurant_menu_categories/add?id=<?php echo  $restaurant->id;?>" class="btn green">Add<i class="fa fa-plus"></i></a>
-                                                         <a href="<?php echo site_url();?>admin/restaurant_menu_categories/viewCategories?id=<?php echo  $restaurant->id;?>" class="btn blue">View<i class="fa fa-expand"></i></a>
-                                                            </div></td>
-                                                 <td><div class="btn-group btn-group-circle btn-group-solid">
-                                                         <a href="<?php echo site_url();?>admin/restaurant_menu_categories/add?id=<?php echo  $restaurant->id;?>" class="btn green">Add<i class="fa fa-plus"></i></a>
-                                                         <a href="<?php echo site_url();?>admin/restaurant_menu_categories/viewCategories?id=<?php echo  $restaurant->id;?>" class="btn blue">View<i class="fa fa-expand"></i></a>
-                                                            </div></td>
-                                               
-                                                <td><a href="<?php echo site_url();?>admin/restaurants/edit?id=<?php echo  $restaurant->id;?>" class="btn btn-circle btn-icon-only blue"> <i class="fa fa-edit"></i> </a>
-                                                    <a href="<?php echo site_url();?>admin/restaurants/delete?id=<?php echo  $restaurant->id;?>" class="btn btn-circle btn-icon-only red"> <i class="fa fa-times"></i> </a>
+                                                <td><?php echo $category->id; ?></td>
+                                                <td><?php echo $category->name; ?></td>
+                                                <td><?php echo $category->status; ?></td>
+                                                <td><a href="<?php echo site_url();?>admin/restaurant_menu_categories/edit?id=<?php echo  $category->id;?>&restaurant_id=<?php echo $category->restaurant_id;?>" class="btn btn-circle btn-icon-only blue"> <i class="fa fa-edit"></i> </a>
+                                                    <a href="<?php echo site_url();?>admin/restaurant_menu_categories/delete?id=<?php echo  $category->id;?>&restaurant_id=<?php echo $category->restaurant_id;?>" class="btn btn-circle btn-icon-only red"> <i class="fa fa-times"></i> </a>
                                                 </td>
                                             </tr>
                                             
